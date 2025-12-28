@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Laptops</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body{font-family:'Cairo',sans-serif;background:#f5f5f5;margin:0}
+header{background:#0f172a;color:white;padding:15px;display:flex;justify-content:space-between;align-items:center}
+button{background:#0f172a;color:white;border:none;padding:8px;border-radius:5px;margin-top:5px}
+.product{background:white;padding:15px;margin:15px;border-radius:10px}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html">⬅</a>
+<span id="title">لابتوبات</span>
+<a href="cart.html">🛒</a>
+<button onclick="toggleLang()">EN</button>
+</header>
+
+<div class="product">
+<h3>HP Laptop</h3>
+<p>500$</p>
+<button onclick="addToCart('لابتوب HP','HP Laptop',500)">أضف للسلة</button>
+</div>
+
+<div class="product">
+<h3>Dell Laptop</h3>
+<p>600$</p>
+<button onclick="addToCart('لابتوب Dell','Dell Laptop',600)">أضف للسلة</button>
+</div>
+
+<script>
+let lang=localStorage.getItem("lang")||"ar";
+document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+document.getElementById("title").innerText=lang==="ar"?"لابتوبات":"Laptops";
+
+function toggleLang(){
+lang=lang==="ar"?"en":"ar";localStorage.setItem("lang",lang);location.reload();
+}
+
+function addToCart(ar,en,price){
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+cart.push({ar,en,price});
+localStorage.setItem("cart",JSON.stringify(cart));
+alert(lang==="ar"?"تمت الإضافة للسلة":"Added to cart");
+}
+</script>
+
+</body>
+</html>

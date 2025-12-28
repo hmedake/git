@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>متجري</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f5f5f5;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 15px;
+    }
+
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    .lang-btn {
+      background: white;
+      color: #0f172a;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .icons a {
+      color: white;
+      margin-left: 10px;
+      font-size: 18px;
+    }
+
+    .banner {
+      background: url("https://images.unsplash.com/photo-1517336714731-489689fd1ca8");
+      background-size: cover;
+      background-position: center;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 20px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 15px;
+    }
+
+    .category {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+
+    .category i {
+      font-size: 30px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .category span {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .category:hover {
+      background: #0f172a;
+      color: white;
+    }
+
+    .category:hover i {
+      color: white;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="top-header">
+    <div class="logo" id="logoText">متجري</div>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="ابحث عن فئة...">
+    </div>
+
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+
+    <div class="icons">
+      <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+      <a href="#"><i class="fa fa-user"></i></a>
+    </div>
+  </div>
+</header>
+
+<div class="banner" id="bannerText">
+  أفضل العروض 🔥
+</div>
+
+<div class="section">
+  <h2 id="catTitle">الفئات</h2>
+
+  <div class="categories">
+
+    <a href="laptop.html" class="category" data-ar="لابتوبات" data-en="Laptops">
+      <i class="fa fa-laptop"></i>
+      <span>لابتوبات</span>
+    </a>
+
+    <a href="games.html" class="category" data-ar="ألعاب" data-en="Games">
+      <i class="fa fa-gamepad"></i>
+      <span>ألعاب</span>
+    </a>
+
+    <a href="headphones.html" class="category" data-ar="سماعات" data-en="Headphones">
+      <i class="fa fa-headphones"></i>
+      <span>سماعات</span>
+    </a>
+
+    <a href="keyboards.html" class="category" data-ar="كيبوردات" data-en="Keyboards">
+      <i class="fa fa-keyboard"></i>
+      <span>كيبوردات</span>
+    </a>
+
+    <a href="mice.html" class="category" data-ar="ماوسات" data-en="Mice">
+      <i class="fa fa-mouse"></i>
+      <span>ماوسات</span>
+    </a>
+
+    <a href="parts.html" class="category" data-ar="قطع كمبيوتر" data-en="PC Parts">
+      <i class="fa fa-microchip"></i>
+      <span>قطع كمبيوتر</span>
+    </a>
+
+  </div>
+</div>
+
+<footer id="footerText">
+  © 2025 جميع الحقوق محفوظة
+</footer>
+
+<script>
+  let currentLang = localStorage.getItem("lang") || "ar";
+
+  function applyLang() {
+    document.documentElement.lang = currentLang;
+    document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+
+    document.getElementById("logoText").innerText =
+      currentLang === "ar" ? "متجري" : "My Store";
+
+    document.getElementById("bannerText").innerText =
+      currentLang === "ar" ? "أفضل العروض 🔥" : "Best Deals 🔥";
+
+    document.getElementById("catTitle").innerText =
+      currentLang === "ar" ? "الفئات" : "Categories";
+
+    document.getElementById("footerText").innerText =
+      currentLang === "ar"
+        ? "© 2025 جميع الحقوق محفوظة"
+        : "© 2025 All rights reserved";
+
+    document.getElementById("searchInput").placeholder =
+      currentLang === "ar" ? "ابحث عن فئة..." : "Search category...";
+
+    document.querySelector(".lang-btn").innerText =
+      currentLang === "ar" ? "EN" : "AR";
+
+    document.querySelectorAll(".category").forEach(cat => {
+      cat.querySelector("span").innerText =
+        currentLang === "ar" ? cat.dataset.ar : cat.dataset.en;
+    });
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === "ar" ? "en" : "ar";
+    localStorage.setItem("lang", currentLang);
+    applyLang();
+  }
+
+  applyLang();
+
+  // البحث
+  document.getElementById("searchInput").addEventListener("keyup", function () {
+    const value = this.value.toLowerCase();
+    document.querySelectorAll(".category").forEach(cat => {
+      cat.style.display = cat.innerText.toLowerCase().includes(value)
+        ? "block"
+        : "none";
+    });
+  });
+</script>
+
+</body>
+</html>
